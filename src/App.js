@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import ReactDatePicker from "react-datepicker";
+import { useState } from "react";
+import "react-datepicker/dist/react-datepicker.css";
+import RangePicker from "./RangePicker";
 
 function App() {
+  const [selectedDate, setSelectedDate] = useState(null);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ReactDatePicker
+        selected={selectedDate}
+        onChange={(date) => setSelectedDate(date)}
+        dateFormat="yyyy/MM/dd"
+        // minDate={new Date()}
+        maxDate={new Date()}
+        placeholderText="Select Date"
+        disabled
+      />
+      <h6>Range Picker</h6>
+      <RangePicker />
     </div>
   );
 }
